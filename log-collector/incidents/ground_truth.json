@@ -23,5 +23,25 @@
     "expected_root_cause_keywords": ["oom", "memory", "leak", "out of memory"],
     "expected_confidence": "high",
     "notes": "Container-died event (exit code 137) triggered via Docker event-stream watching, not log content — tests whether diagnosis correctly connects the OOM exit code with preceding memory-leak warnings"
+  },
+  "incident_2026-07-12T13_43_56.824963042Z.json": {
+    "expected_root_cause_keywords": ["shutdown", "password", "authentication"],
+    "expected_confidence": "high",
+    "notes": "COMPOUND FAILURE: automated test round ran DB shutdown immediately followed by a wrong-password restart, close enough in time that the collector's window captured both. Tests whether the model correctly identifies a causal CHAIN of two distinct events rather than collapsing them into one label."
+  },
+  "incident_2026-07-12T13_44_39.284071_00_00.json": {
+    "expected_root_cause_keywords": ["password", "authentication"],
+    "expected_confidence": "high",
+    "notes": "Container-died event during a wrong-password crash loop — tests whether OOM-style event detection (via CONTAINER_DIED) correctly defers to the actual underlying cause (auth failure) rather than misattributing to memory."
+  },
+  "incident_2026-07-12T13_46_52.538600317Z.json": {
+    "expected_root_cause_keywords": ["shutdown", "password", "authentication"],
+    "expected_confidence": "high",
+    "notes": "COMPOUND FAILURE: same chained shutdown-then-wrong-password pattern as the 13_43_56 case, from a later automation round — tests consistency of chained-cause reasoning across repeated occurrences."
+  },
+  "incident_2026-07-12T13_47_25.358379_00_00.json": {
+    "expected_root_cause_keywords": ["password", "authentication"],
+    "expected_confidence": "high",
+    "notes": "Container-died event during a wrong-password crash loop, second occurrence — consistency check alongside 13_44_39."
   }
 }
